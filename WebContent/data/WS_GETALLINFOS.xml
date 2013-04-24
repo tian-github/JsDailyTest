@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.ucstar.im.third.kmss.landray.com">
+			<!--{"title":""}--><soapenv:Header></soapenv:Header>
+			<soapenv:Body>
+				<web:WS_GETALLINFOS soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+					<ARGUMENT xsi:type="com:WS_TIME" xmlns:com="com.landray.kmss.third.im.ucstar.webservice.UcStarOrgSynchro">
+						<TIMESTAMP xsi:type="xsd:string">2010-10-10 11:11:11</TIMESTAMP>
+						<CURPAGE xsi:type="xsd:string">0</CURPAGE>
+					</ARGUMENT>
+				</web:WS_GETALLINFOS>
+			</soapenv:Body>
+		</soapenv:Envelope>

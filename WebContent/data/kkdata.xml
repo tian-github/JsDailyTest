@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<web ID="13cfd2ad7d0cd1b38481abb4995aa502"><Input><soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.ucstar.im.third.kmss.landray.com">
+			<!--{"title":""}--><soapenv:Header></soapenv:Header>
+			<soapenv:Body>
+				<web:WS_GETALLINFOS soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+					<ARGUMENT xsi:type="com:WS_TIME" xmlns:com="com.landray.kmss.third.im.ucstar.webservice.UcStarOrgSynchro">
+						<!--Optional:|erp_web={"minOccurs":"1","maxOccurs":"1","ctype":"string","title":""}-->
+						<TIMESTAMP xsi:type="xsd:string">2010-10-10 11:11:11</TIMESTAMP>
+						<!--Optional:|erp_web={"minOccurs":"1","maxOccurs":"1","ctype":"string","title":""}-->
+						<CURPAGE xsi:type="xsd:string">0</CURPAGE>
+					</ARGUMENT>
+				</web:WS_GETALLINFOS>
+			</soapenv:Body>
+		</soapenv:Envelope></Input><Output><soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ucs="http://127.0.0.1:8083/EWEB/axis/UcStarOrgSynchroService" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+			<!--{"title":"","isSuccess":"","isFail":""}--><soapenv:Header/>
+			<soapenv:Body>
+				<ucs:WS_GETALLINFOSResponse soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+					<WS_GETALLINFOSReturn xsi:type="com:WS_RETURNVAL" xmlns:com="com.landray.kmss.third.im.ucstar.webservice.UcStarOrgSynchro">
+						<!--Optional:|erp_web={"minOccurs":"1","maxOccurs":"1","ctype":"short","title":"","isSuccess":"","isFail":""}-->
+						<RETURN_STATE xsi:type="xsd:short"/>
+						<!--Optional:|erp_web={"minOccurs":"1","maxOccurs":"1","ctype":"string","title":"","isSuccess":"","isFail":""}-->
+						<ERROR_INFO xsi:type="xsd:string"/>
+						<!--Optional:|erp_web={"minOccurs":"1", "maxOccurs":"1"}-->
+						<TIMESTAMP xsi:type="urn:WS_ARGUMENT" xmlns:urn="urn:DefaultNamespace">
+							<!--Optional:|erp_web={"minOccurs":"1","maxOccurs":"1","ctype":"string","title":"","isSuccess":"","isFail":""}-->
+							<TIMESTAMP xsi:type="xsd:string"/>
+							<!--Optional:|erp_web={"minOccurs":"1","maxOccurs":"1","ctype":"short","title":"","isSuccess":"","isFail":""}-->
+							<CURPAGE xsi:type="xsd:short"/>
+						</TIMESTAMP>
+						<!--Optional:|erp_web={"minOccurs":"1","maxOccurs":"1","title":"","isSuccess":"","isFail":""}-->
+						<DEPARTMENTS xsi:type="ucs:ArrayOf_tns1_WS_DEPARTMENT" soapenc:arrayType="com:WS_DEPARTMENT[]"/>
+						<!--Optional:|erp_web={"minOccurs":"1","maxOccurs":"1","title":"","isSuccess":"","isFail":""}-->
+						<PERSONS xsi:type="ucs:ArrayOf_tns1_WS_PERSON" soapenc:arrayType="com:WS_PERSON[]"/>
+						<!--Optional:|erp_web={"minOccurs":"1","maxOccurs":"1","ctype":"short","title":"","isSuccess":"","isFail":""}-->
+						<PAGES xsi:type="xsd:short"/>
+					</WS_GETALLINFOSReturn>
+				</ucs:WS_GETALLINFOSResponse>
+			</soapenv:Body>
+		</soapenv:Envelope></Output><Fault><!--Optional:|erp_web={"minOccurs":"1", "maxOccurs":"1"}-->
+		<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+			<!--Optional:|erp_web={"minOccurs":"0","maxOccurs":"1","title":""}-->
+			<soapenv:Header>
+				<!--You may enter ANY elements at this point-->
+			</soapenv:Header>
+			<!--Optional:|erp_web={"minOccurs":"1", "maxOccurs":"1"}-->
+			<soapenv:Body>
+				<!--You may enter ANY elements at this point-->
+				<soapenv:Fault>
+					<!--Optional:|erp_web={"minOccurs":"1","maxOccurs":"1","ctype":"QName","title":""}-->
+					<faultcode/>
+					<!--Optional:|erp_web={"minOccurs":"1","maxOccurs":"1","title":""}-->
+					<faultstring xml:lang=""/>
+					<!--Optional:|erp_web={"minOccurs":"0","maxOccurs":"1","ctype":"anyURI","title":""}-->
+					<faultactor/>
+					<!--Optional:|erp_web={"minOccurs":"0","maxOccurs":"1","title":""}-->
+					<detail>
+						<!--You may enter ANY elements at this point-->
+					</detail>
+				</soapenv:Fault>
+			</soapenv:Body>
+		</soapenv:Envelope></Fault></web>
