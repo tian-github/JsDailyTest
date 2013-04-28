@@ -3,27 +3,34 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>executeWebservice</title>
-<link href="treetable/stylesheets/jquery.treeTable.css" rel="stylesheet" type="text/css" />
-<link href="treetable/stylesheets/master.css" rel="stylesheet" type="text/css" />
+<link href="treetable/stylesheets/jquery.treeTable.css" rel="stylesheet"
+	type="text/css" />
+<link href="treetable/stylesheets/master.css" rel="stylesheet"
+	type="text/css" />
 <SCRIPT type="text/javascript" src="resource/jquery-1.7.1.js"></SCRIPT>
 <SCRIPT type="text/javascript" src="resource/execute.js"></SCRIPT>
 <SCRIPT type="text/javascript" src="resource/mustache.js"></SCRIPT>
 <SCRIPT type="text/javascript" src="resource/erp.parser.js"></SCRIPT>
-<SCRIPT type="text/javascript" src="treetable/javascripts/jquery.treeTable.js"></SCRIPT>
+<SCRIPT type="text/javascript"
+	src="treetable/javascripts/jquery.treeTable.js"></SCRIPT>
 </head>
 <body>
 
-<div id="inputData"></div>
-<hr>
-username:<input type="text" id="username" value="" /><br>
-password:<input type="password" id="password"  value="" /><br>
-wsdl:<input type="text" id="wsdl" style="width: 800px"  value="" /><br>
-<input type="button" value="postData" onclick="executeWebservie()"/>
-<hr>
-<div id="output"></div>
+	<div id="inputData"></div>
+	<hr>
+	username:
+	<input type="text" id="username" value="" />
+	<br> password:
+	<input type="password" id="password" value="" />
+	<br> wsdl:
+	<input type="text" id="wsdl" style="width: 800px" value="" />
+	<br>
+	<input type="button" value="postData" onclick="executeWebservie()" />
+	<hr>
+	<div id="output"></div>
 
 
-<script id="erp_query_template" type="text/mustache">
+	<script id="erp_query_template" type="text/mustache">
 <table class="erp_template example treeTable" style="width:100%" >
 	<caption>{{info.caption}}</caption>
 	<thead>
@@ -53,64 +60,52 @@ wsdl:<input type="text" id="wsdl" style="width: 800px"  value="" /><br>
 </script>
 </body>
 <script>
-	var executor=new kKexecutor();
-	 var httpReq=executor.createStandardXHR();
-   (function (){
-	var dataxml=executor.load_WS_GETALLINFOS_Data();
-	executor.postDataDom=dataxml;
-	executor.initView(dataxml);
-	$(".erp_template").treeTable({
-		initialState: "expanded"
-	});
-   })();
-   
-   function executeWebservie(){
+	var executor = new kKexecutor();
+	var httpReq = executor.createStandardXHR();
+	(function() {
+		var dataxml = executor.load_WS_GETALLINFOS_Data();
+		executor.postDataDom = dataxml;
+		executor.initView(dataxml);
+		$(".erp_template").treeTable({
+			initialState : "expanded"
+		});
+	})();
 
-	   var output=$("#output").empty();
-	   
-	   var user=$("#username").val();
-	   var pwd=$("#password").val();
-	   var wsdl=$("#wsdl").val();
-	   var postDom=executor.getPostData(executor.postDataDom);
-	   if(wsdl){
-		   if(user&&pwd){
-			   httpReq.open("POST",wsdl,true,user,pwd);
-		   }
-		   else{
-			   httpReq.open("POST",wsdl,true);
-		   }
-		   httpReq.setRequestHeader("Content-Type","text/xml; charset=utf-8");
-		   httpReq.setRequestHeader("SOAPAction",wsdl);
-		 //httpReq.setRequestHeader("Content-Type", "application/soap+xml");
-		   httpReq.send(postDom);
-		   //回调
-		   httpReq.onreadystatechange=function(){
-			   if (httpReq.readyState==4)
-			   {// 4 = "loaded"
-			   if (httpReq.status==200)
-			     {// 200 = OK
-			     // ...our code here...
-				  // alert(httpReq.responseXML);
-					  var rtndom =httpReq.responseXML;
-			     	  executor.initRtnView(rtndom);
-			     }
-			   else
-			     {
-				   alert(httpReq.responseText);
-			     alert("Problem retrieving XML data");
-			     }
-			   }
-			   
-		   }
-		   
-	   }
-	  
-	   
-	   
-   }
-   
+	function executeWebservie() {
 
+		var output = $("#output").empty();
 
+		var user = $("#username").val();
+		var pwd = $("#password").val();
+		var wsdl = $("#wsdl").val();
+		var postDom = executor.getPostData(executor.postDataDom);
+		if (wsdl) {
+			if (user && pwd) {
+				httpReq.open("POST", wsdl, true, user, pwd);
+			} else {
+				httpReq.open("POST", wsdl, true);
+			}
+			httpReq.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
+			httpReq.setRequestHeader("SOAPAction", wsdl);
+			//httpReq.setRequestHeader("Content-Type", "application/soap+xml");
+			httpReq.send(postDom);
+			//回调
+			httpReq.onreadystatechange = function() {
+				if (httpReq.readyState == 4) {// 4 = "loaded"
+					if (httpReq.status == 200) {// 200 = OK
+						// ...our code here...
+						// alert(httpReq.responseXML);
+						var rtndom = httpReq.responseXML;
+						executor.initRtnView(rtndom);
+					} else {
+						alert(httpReq.responseText);
+						alert("Problem retrieving XML data");
+					}
+				}
+			}
+		}
+
+	}
 </script>
 
 </html>
